@@ -7,11 +7,13 @@ import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import ForgotPass from "./pages/ForgotPass";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div>
      <Router>
+      <Header/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/profile' element={<Profile/>}/>
