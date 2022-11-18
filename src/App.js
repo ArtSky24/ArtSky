@@ -8,7 +8,8 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import ForgotPass from "./pages/ForgotPass";
 import Header from "./components/Header";
-
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <div>
@@ -24,6 +25,18 @@ function App() {
 
       </Routes>
      </Router>
+     <ToastContainer
+position="top-center"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="dark"
+/>
     </div>
   );
 }

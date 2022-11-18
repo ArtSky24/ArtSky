@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import {AiFillEyeInvisible, AiFillEye} from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import OAuth from '../components/OAuth'
+
+
+
 export default function Login() {
     const [showPassword, setShowPassword]  = useState(false)
     const [formData, setFormData] = useState({
@@ -28,6 +31,7 @@ setFormData((prevState)=>({
         const toggleShow = ()=>{
             setShowPassword((prevState)=>!prevState)
             }
+           
   return (
    <section>
     <h1 className='text-3xl text-center mt-6 font-bold'>LOGIN</h1>
@@ -37,7 +41,8 @@ setFormData((prevState)=>({
             className='h-full rounded-2xl'/>
         </div>
         <div className='w-full md:w-[67%] lg:w-[40%] lg:ml-20'>
-            <form >
+            <form onSubmit>
+                
                 <input  type="email" id="email" value={email} onChange={handleEmail} placeholder="Email Address"
                 
                 className="mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out"/>

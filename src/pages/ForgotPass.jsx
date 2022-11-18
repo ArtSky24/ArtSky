@@ -27,7 +27,8 @@ setEmail(e.target.value)
         </div>
         <div className='w-full md:w-[67%] lg:w-[40%] lg:ml-20'>
             <form >
-  
+           
+                 
 
                 <input  type="email" id="email" value={email} onChange={handleEmail} placeholder="Email Address"
                 
@@ -43,7 +44,7 @@ setEmail(e.target.value)
                <div className='flex justify-between whitespace-nowrap text-sm sm:text-lg'>
                <p className='mb-6'> have an account? <Link to="/sign-in" className='text-green-300 font-bold'>Log in</Link></p>
                <p>
-                <Link to="/Login" className='text-blue-300 font-bold'>Log in</Link>
+                <Link to="/sign-up" className='text-blue-300 font-bold'>Register</Link>
                </p>
 
                </div>
