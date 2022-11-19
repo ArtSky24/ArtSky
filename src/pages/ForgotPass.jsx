@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import {AiFillEyeInvisible, AiFillEye} from 'react-icons/ai'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import OAuth from '../components/OAuth'
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth'
 export default function ForgotPass() {
    
     const [email, setEmail] = useState("")
@@ -16,6 +18,25 @@ setEmail(e.target.value)
 
 
     }
+
+    //--------------reset the password------------//
+
+    const forgotPass =async(e)=>{
+        e.preventDefault()
+        try {
+            const auth = getAuth()
+
+            await sendPasswordResetEmail(auth, email)
+
+            toast.success("Email has been sent")
+            
+        } catch (error) {
+            toast.error("Could not reset the password")
+            console.log(error)
+        }
+
+    }
+      //--------------reset the password------------//
  
   return (
    <section>
@@ -26,7 +47,7 @@ setEmail(e.target.value)
             className='h-full rounded-2xl'/>
         </div>
         <div className='w-full md:w-[67%] lg:w-[40%] lg:ml-20'>
-            <form >
+            <form onSubmit={forgotPass} >
            
                  
 
@@ -42,7 +63,7 @@ setEmail(e.target.value)
 
 
                <div className='flex justify-between whitespace-nowrap text-sm sm:text-lg'>
-               <p className='mb-6'> have an account? <Link to="/sign-in" className='text-green-300 font-bold'>Log in</Link></p>
+               <p className='mb-6'> have an account? <Link to="/login" className='text-green-300 font-bold'>Log in</Link></p>
                <p>
                 <Link to="/sign-up" className='text-blue-300 font-bold'>Register</Link>
                </p>
