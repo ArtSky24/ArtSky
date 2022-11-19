@@ -1,11 +1,15 @@
+import { async } from '@firebase/util'
 import React, { useState } from 'react'
 import {AiFillEyeInvisible, AiFillEye} from 'react-icons/ai'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import OAuth from '../components/OAuth'
-
-
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { getAuth } from 'firebase/auth'
+import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
+    const navigate = useNavigate()
     const [showPassword, setShowPassword]  = useState(false)
     const [formData, setFormData] = useState({
         email: "",
@@ -31,6 +35,28 @@ setFormData((prevState)=>({
         const toggleShow = ()=>{
             setShowPassword((prevState)=>!prevState)
             }
+
+
+
+
+               //login with email and pass
+            const emailPass = async(e)=>{
+                e.preventDefault()
+                try {
+                    const auth = getAuth()
+
+                    const userCred  = await signInWithEmailAndPassword(auth, email, password)
+
+                    if(userCred.user){
+                        navigate("/")
+                        toast.success("Welcome to ArtSky")
+
+                    }
+                    
+                } catch (error) {
+                    toast.error("Incorret password or email")
+                }
+                }
            
   return (
    <section>
@@ -41,7 +67,7 @@ setFormData((prevState)=>({
             className='h-full rounded-2xl'/>
         </div>
         <div className='w-full md:w-[67%] lg:w-[40%] lg:ml-20'>
-            <form onSubmit>
+            <form onSubmit={emailPass}>
                 
                 <input  type="email" id="email" value={email} onChange={handleEmail} placeholder="Email Address"
                 
