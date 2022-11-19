@@ -1,7 +1,9 @@
 import React from 'react'
 import { useLocation, useNavigate  } from 'react-router-dom'
+import { getAuth } from 'firebase/auth'
 
 export default function Header() {
+    const auth = getAuth
 
     const location  = useLocation()
     const navigate = useNavigate()

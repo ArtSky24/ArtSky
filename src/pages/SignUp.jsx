@@ -35,17 +35,20 @@ setFormData((prevState)=>({
 
 
     }
+
+    //-------Show and hide the password----//
     const toggleHide = ()=>{
         setShowPassword((prevState)=>!prevState)
         }
         const toggleShow = ()=>{
             setShowPassword((prevState)=>!prevState)
             }
+   //-------Show and hide the password----//
 
 
 
 
-
+//--------------------Submit name, email and password-------------------//
             const submitEmail= async(e)=>{
            e.preventDefault()
            try {
@@ -72,6 +75,7 @@ setFormData((prevState)=>({
            }
 
             }
+            //--------------------Submit name, email and password-------------------//
             
   return (
    <section>
