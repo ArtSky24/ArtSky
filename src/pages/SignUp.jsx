@@ -61,13 +61,13 @@ setFormData((prevState)=>({
             const formDataCopy = {...formData}
             delete formDataCopy.password
             formDataCopy.timestamp = serverTimestamp()
-            await setDoc(doc(db, "user", user.uid), formDataCopy)
+            await setDoc(doc(db, "users", user.uid), formDataCopy)
             navigate("/")
             toast.success("Welcome to ArtSky")
 
             
            } catch (error) {
-            toast.error("Something wrong in registraion")
+            toast.error("Something wrong in registration")
             
            }
 
@@ -126,9 +126,10 @@ setFormData((prevState)=>({
                   <p className='text-center font-semibold'>OR</p>
                 </div>
                 <div>
-                    <OAuth/>
+                   
                 </div>
             </form>
+            <OAuth/>
            
         </div>
     </div>
