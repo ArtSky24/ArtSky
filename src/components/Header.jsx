@@ -3,6 +3,7 @@ import { useLocation, useNavigate  } from 'react-router-dom'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { useState } from 'react'
 export default function Header() {
+   
     const [pages, setPages] = useState("Sign in")
     const auth = getAuth()
 
@@ -14,6 +15,7 @@ export default function Header() {
             return true
         }
     }
+
     useEffect(()=>{
         
 onAuthStateChanged(auth, (user)=>{
@@ -28,6 +30,8 @@ onAuthStateChanged(auth, (user)=>{
 
 
     }, [auth])
+    
+    
   return (
     <div className='bg-white border-b shadow-sm sticky top-0 z-50'>
 
