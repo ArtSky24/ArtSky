@@ -5,6 +5,10 @@ import { useNavigate } from 'react-router'
 import { toast } from 'react-toastify'
 import {doc, updateDoc} from 'firebase/firestore'
 import { db } from '../firebase'
+import {FcHome} from 'react-icons/fc'
+import { Link } from 'react-router-dom'
+
+
 export default function Profile() {
   const [changeDetail , setChangeDetail] = useState(false)
   const navigate = useNavigate()
@@ -82,13 +86,25 @@ toast.success("Profile has been updated")
       <input type="email" id="email" value={email} disabled={!changeDetail} onChange={changeProfile}
       className={`mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition 
       ease-in-out && ${changeDetail ? "bg-blue-300 focus:bg-blue-300": ""}` }/>
+      <div className='flex justify-between'>
+      <p>Do you want to change your profile? <span onClick={editProfile} className='text-yellow-300 font-bold cursor-pointer hover:text-yellow-700'>
+     {changeDetail ? "Apply" : "Edit"}</span></p>
+    
+      <button className='bg-blue-500 text-sm w-32 rounded  shadow-lg hover:bg-blue-300' onClick={logout}>Sign out</button>
+      </div>
     </form>
     <div className='flex justify-between whitespace-nowrap'>
 
 
-    <p>Do you want to change your profile? <span onClick={editProfile} className='text-yellow-300 font-bold cursor-pointer hover:text-yellow-700'>
-     {changeDetail ? "Apply" : "Edit"}</span></p>
-    <button className='bg-blue-500 text-sm w-32 rounded  shadow-lg hover:bg-blue-300' onClick={logout}>Sign out</button>
+    
+    <button type='submit' className='w-full bg-blue-600 hover:bg-blue-300 text-white uppercase py-3 text-sm mt-6 transition duration-150 ease-in-out hover:shadow-lg
+    font-500 rounded shadow-md active:bg-blue-800
+    font-bold'>
+    <Link  to={"/CreateList"} className="flex justify-center items-center">  <FcHome className='mr-2 text-3xl bg-red-200 rounded-full'/>
+      Sell or rent your home</Link>
+      </button>
+
+    
     </div>
    </div>
    </div>
